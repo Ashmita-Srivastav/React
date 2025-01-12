@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: The user writes a note in the text field and clicks the "Save" button.
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa (with note data in the request body)
+    activate server
+    server-->>browser: { "message": "Note created successfully" }
+    deactivate server
+
+    Note right of browser: The browser adds the new note to the local state without reloading the page.
+
+    browser->>browser: JavaScript dynamically updates the note list in the DOM.
